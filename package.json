@@ -1,0 +1,39 @@
+{
+    "name": "lifetimesoft-docs",
+    "version": "1.0.0",
+    "description": "Lifetime Soft Documentation",
+    "main": "src/index.tsx",
+    "scripts": {
+        "build:css": "node node_modules/@tailwindcss/cli/dist/index.mjs -i ./src/input.css -o ./public/css/style.css --minify",
+        "build:js": "node node_modules/esbuild/bin/esbuild src/alpine.js --bundle --minify --outfile=public/js/alpine.js",
+        "build": "npm run build:css && npm run build:js",
+        "dev": "wrangler dev src/index.tsx --remote",
+        "deploy": "npm run build && wrangler deploy --minify src/index.tsx"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://gitlab.com/lifetimesoft/web/lifetimesoft-docs.git"
+    },
+    "keywords": [],
+    "author": "",
+    "license": "ISC",
+    "bugs": {
+        "url": "https://gitlab.com/lifetimesoft/web/lifetimesoft-docs/issues"
+    },
+    "homepage": "https://gitlab.com/lifetimesoft/web/lifetimesoft-docs#readme",
+    "type": "module",
+    "dependencies": {
+        "hono": "^4.12.12"
+    },
+    "devDependencies": {
+        "@cloudflare/workers-types": "^4.20260410.1",
+        "@tailwindcss/cli": "^4.2.2",
+        "alpinejs": "^3.15.11",
+        "esbuild": "^0.28.0",
+        "tailwindcss": "^4.2.2",
+        "wrangler": "^4.81.1"
+    },
+    "engines": {
+        "node": "20.x"
+    }
+}

@@ -1,0 +1,3 @@
+export const CONST = {
+    STATIC_PATH: 'https://static.lifetimesoft.com'
+};
