@@ -26,7 +26,7 @@ export const Index = ({lang}: { lang: Lang }) => {
                         {tr.heroBadge}
                     </div>
                     <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">{tr.heroTitle}</h1>
-                    <p class="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
+                    <p class="mt-4 text-md text-gray-500 max-w-xl mx-auto">
                         {tr.heroDesc}
                     </p>
                 </div>
