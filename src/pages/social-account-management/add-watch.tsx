@@ -6,7 +6,8 @@ import {Toolbar} from "../../layout/toolbar";
 import {getContent} from "../../lib/content";
 
 const menu = [
-    {text: 'Add Watch Account', link: 'add-watch'}
+    {text: 'Add Watch Account', link: 'add-watch'},
+    {text: 'Bind Social & Identity', link: 'bind-social-and-identity'},
 ]
 
 export const AddWatchAccount = ({lang}: { lang: Lang }) => {
