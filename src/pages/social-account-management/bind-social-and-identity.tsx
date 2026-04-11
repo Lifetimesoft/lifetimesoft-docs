@@ -20,7 +20,7 @@ export const BindSocialAndIdentity = ({lang}: { lang: Lang }) => {
                 <div class="flex flex-col flex-grow min-w-0">
                     <Toolbar breadcrumbs={[
                         {label: 'Social Account Management', href: `/social-account-management?lang=${lang}`},
-                        {label: lang === 'th' ? 'ผูก Social & Identity' : 'Bind Social & Identity'}
+                        {label: 'Bind Social & Identity'}
                     ]}/>
                     <div class="flex-grow overflow-y-auto w-full">
                         <div class="w-full px-10 py-10 pb-16 prose prose-green max-w-none"
