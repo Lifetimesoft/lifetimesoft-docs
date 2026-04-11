@@ -26,7 +26,7 @@ export const Index = ({lang}: { lang: Lang }) => {
                         {tr.heroBadge}
                     </div>
                     <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">{tr.heroTitle}</h1>
-                    <p class="mt-4 text-lg text-gray-500 max-w-xl mx-auto">
+                    <p class="mt-4 text-md text-gray-500 max-w-xl mx-auto">
                         {tr.heroDesc}
                     </p>
                 </div>
@@ -70,13 +70,15 @@ export const Index = ({lang}: { lang: Lang }) => {
                             <div class="p-2">
                                 <button class="w-full text-left px-3 py-2 rounded-lg text-sm transition-colors"
                                     x-bind:class="serviceActiveIndex === -1 ? 'bg-green-50 text-green-700 font-medium' : 'text-gray-600 hover:bg-gray-50'"
-                                    x-on:click={`clickService('${tr.allLabel}', [], -1)`}>
+                                    data-index="-1"
+                                    x-on:click="handleCategoryClick($event)">
                                     {tr.allLabel} ({allApps.length})
                                 </button>
                                 {services.map((service, index) => (
                                     <button class="w-full text-left px-3 py-2 rounded-lg text-sm transition-colors"
                                         x-bind:class={`serviceActiveIndex === ${index} ? 'bg-green-50 text-green-700 font-medium' : 'text-gray-600 hover:bg-gray-50'`}
-                                        x-on:click={`clickService('${service.name}', ${index})`}>
+                                        data-index={String(index)}
+                                        x-on:click="handleCategoryClick($event)">
                                         {service.name} ({service.apps.length})
                                     </button>
                                 ))}
@@ -137,12 +139,13 @@ export const Index = ({lang}: { lang: Lang }) => {
                     return {
                         services: servicesData,
                         filter: '',
-                        serviceActive: '${tr.allLabel}',
                         serviceActiveIndex: -1,
                         serviceApp: allApps,
-                        clickService(name, index) {
+                        allApps: allApps,
+                        handleCategoryClick(event) {
+                            const index = parseInt(event.currentTarget.dataset.index);
                             if (index === -1) {
-                                this.serviceApp = allApps;
+                                this.serviceApp = this.allApps;
                             } else {
                                 const s = servicesData[index];
                                 this.serviceApp = s.apps.map(a => ({
@@ -152,14 +155,24 @@ export const Index = ({lang}: { lang: Lang }) => {
                                     group: s.name
                                 }));
                             }
-                            this.serviceActive = name;
                             this.serviceActiveIndex = index;
                             this.filter = '';
                         },
                         handleSelect(event) {
                             const index = parseInt(event.target.value);
-                            const name = index === -1 ? '${tr.allLabel}' : servicesData[index].name;
-                            this.clickService(name, index);
+                            if (index === -1) {
+                                this.serviceApp = this.allApps;
+                            } else {
+                                const s = servicesData[index];
+                                this.serviceApp = s.apps.map(a => ({
+                                    name: a.name['${lang}'],
+                                    desc: a.desc['${lang}'],
+                                    url: a.url,
+                                    group: s.name
+                                }));
+                            }
+                            this.serviceActiveIndex = index;
+                            this.filter = '';
                         }
                     };
                 }
