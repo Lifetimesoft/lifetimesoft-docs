@@ -49,6 +49,7 @@ app.get('/sitemap.xml', (c) => {
   <url><loc>https://docs.lifetimesoft.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://docs.lifetimesoft.com/social-account-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://docs.lifetimesoft.com/social-account-management/add-watch</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/social-account-management/bind-social-and-identity</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://docs.lifetimesoft.com/identity-account-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://docs.lifetimesoft.com/identity-account-management/add-account</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>`
