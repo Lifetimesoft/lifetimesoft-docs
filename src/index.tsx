@@ -3,6 +3,7 @@ import {getLang} from "./model/i18n";
 import {Index} from "./pages";
 import {SocialAccountManagement} from "./pages/social-account-management";
 import {AddWatchAccount} from "./pages/social-account-management/add-watch";
+import {BindSocialAndIdentity} from "./pages/social-account-management/bind-social-and-identity";
 import {IdentityAccountManagement} from "./pages/identity-account-management";
 import {AddIdentityAccount} from "./pages/identity-account-management/add-account";
 
@@ -21,6 +22,11 @@ app.get('/social-account-management', (c) => {
 app.get('/social-account-management/add-watch', (c) => {
     const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
     return c.html(<AddWatchAccount lang={lang}/>)
+})
+
+app.get('/social-account-management/bind-social-and-identity', (c) => {
+    const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
+    return c.html(<BindSocialAndIdentity lang={lang}/>)
 })
 
 app.get('/identity-account-management', (c) => {
@@ -43,6 +49,7 @@ app.get('/sitemap.xml', (c) => {
   <url><loc>https://docs.lifetimesoft.com/</loc><changefreq>monthly</changefreq><priority>1.0</priority></url>
   <url><loc>https://docs.lifetimesoft.com/social-account-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://docs.lifetimesoft.com/social-account-management/add-watch</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/social-account-management/bind-social-and-identity</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://docs.lifetimesoft.com/identity-account-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://docs.lifetimesoft.com/identity-account-management/add-account</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>`

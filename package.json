@@ -23,7 +23,10 @@
     "homepage": "https://gitlab.com/lifetimesoft/web/lifetimesoft-docs#readme",
     "type": "module",
     "dependencies": {
-        "hono": "^4.12.12"
+        "@tailwindcss/typography": "^0.5.19",
+        "@types/marked": "^5.0.2",
+        "hono": "^4.12.12",
+        "marked": "^18.0.0"
     },
     "devDependencies": {
         "@cloudflare/workers-types": "^4.20260410.1",
