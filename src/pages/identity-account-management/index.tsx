@@ -20,6 +20,7 @@ export const IdentityAccountManagement = ({lang}: { lang: Lang }) => {
                     <Toolbar breadcrumbs={[{label: 'Identity Account Management'}]}/>
                     <div class="flex-grow overflow-y-auto w-full">
                         <div class="w-full px-10 py-10 pb-16 prose prose-green max-w-none"
+                             style="max-width:none"
                              dangerouslySetInnerHTML={{__html: html}}/>
                     </div>
                 </div>
