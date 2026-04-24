@@ -10,11 +10,11 @@ export const LayoutDocs = ({children, title, lang}: { children: any, title: stri
             <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
             <link type="image/x-icon" href={`${CONST.STATIC_PATH}/img/favicon.ico`} rel="shortcut icon"/>
-            <link rel="stylesheet" href="/css/style.css"/>
-            <script defer src="/js/alpine.js"></script>
+            <script src="https://cdn.tailwindcss.com"></script>
+            <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
             <style dangerouslySetInnerHTML={{__html: `
-                .transition-all { transition: all 0.3s ease-in-out; }
-
+                [x-cloak]{display:none!important}
+                
                 /* ── prose overrides to match cli-docs style ── */
                 .doc-content h1 { font-size: 1.875rem; font-weight: 700; color: #111827; margin-bottom: 0.75rem; padding-bottom: 0.75rem; border-bottom: 1px solid #f3f4f6; }
                 .doc-content h2 { font-size: 1.25rem; font-weight: 700; color: #111827; margin-top: 2.5rem; margin-bottom: 1rem; display: flex; align-items: center; gap: 0.5rem; }
@@ -100,28 +100,22 @@ export const LayoutDocs = ({children, title, lang}: { children: any, title: stri
             `}}/>
         </head>
         <body>
-        <div class="body flex flex-col h-screen overflow-hidden">
+        <div class="body flex flex-col min-h-screen bg-white">
             {children}
         </div>
         <script dangerouslySetInnerHTML={{__html: `
-            const toggleBtn = document.getElementById("toggleBtn");
-            const sidebar = document.getElementById("sidebar");
-            let isVisible = true;
-            toggleBtn.addEventListener("click", () => {
-                isVisible = !isVisible;
-                sidebar.classList.toggle("hidden", !isVisible);
-            });
-            const openBtn = document.getElementById('openSidebar');
-            const closeBtn = document.getElementById('closeSidebar');
-            const sidebarSmall = document.getElementById('sidebarSmall');
-            const overlay = document.getElementById('sidebarOverlay');
-            const openBtnHeader = document.getElementById('openSidebarHeader');
-            const openMobile = () => { sidebarSmall.classList.remove('-translate-x-full'); overlay.classList.remove('hidden'); };
-            const closeMobile = () => { sidebarSmall.classList.add('-translate-x-full'); overlay.classList.add('hidden'); };
-            openBtn.onclick = openMobile;
-            if (openBtnHeader) openBtnHeader.onclick = openMobile;
-            closeBtn.onclick = closeMobile;
-            overlay.onclick = closeMobile;
+            // Mobile sidebar for doc pages
+            const _toggle = document.getElementById('sidebarToggleMobile');
+            const _drawer = document.getElementById('docSidebarDrawer');
+            const _overlay = document.getElementById('docSidebarOverlay');
+            const _close = document.getElementById('docSidebarClose');
+            if (_drawer && _overlay) {
+                const openDrawer = () => { _drawer.classList.remove('-translate-x-full'); _overlay.classList.remove('hidden'); };
+                const closeDrawer = () => { _drawer.classList.add('-translate-x-full'); _overlay.classList.add('hidden'); };
+                if (_toggle) _toggle.onclick = openDrawer;
+                if (_close) _close.onclick = closeDrawer;
+                _overlay.onclick = closeDrawer;
+            }
 
             // Copy button for code blocks
             document.querySelectorAll('.doc-content pre').forEach(pre => {

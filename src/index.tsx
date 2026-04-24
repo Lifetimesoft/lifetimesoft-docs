@@ -6,6 +6,10 @@ import {AddWatchAccount} from "./pages/social-account-management/add-watch";
 import {BindSocialAndIdentity} from "./pages/social-account-management/bind-social-and-identity";
 import {IdentityAccountManagement} from "./pages/identity-account-management";
 import {AddIdentityAccount} from "./pages/identity-account-management/add-account";
+import AIAgentsManagementPage from "./pages/ai-agents-management";
+import CronExpressionFormatPage from "./pages/ai-agents-management/cron-expression-format";
+import TroubleshootingPage from "./pages/ai-agents-management/troubleshooting";
+import BestPracticesPage from "./pages/ai-agents-management/best-practices";
 
 const app = new Hono()
 
@@ -39,6 +43,31 @@ app.get('/identity-account-management/add-account', (c) => {
     return c.html(<AddIdentityAccount lang={lang}/>)
 })
 
+app.get('/ai-agents-management', (c) => {
+    const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
+    return c.html(<AIAgentsManagementPage lang={lang}/>)
+})
+
+app.get('/ai-agents-management/overview', (c) => {
+    const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
+    return c.html(<AIAgentsManagementPage lang={lang}/>)
+})
+
+app.get('/ai-agents-management/cron-expression-format', (c) => {
+    const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
+    return c.html(<CronExpressionFormatPage lang={lang}/>)
+})
+
+app.get('/ai-agents-management/troubleshooting', (c) => {
+    const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
+    return c.html(<TroubleshootingPage lang={lang}/>)
+})
+
+app.get('/ai-agents-management/best-practices', (c) => {
+    const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
+    return c.html(<BestPracticesPage lang={lang}/>)
+})
+
 app.get('/robots.txt', (c) => {
     return c.text('User-agent: *\nAllow: /\nSitemap: https://docs.lifetimesoft.com/sitemap.xml')
 })
@@ -52,6 +81,11 @@ app.get('/sitemap.xml', (c) => {
   <url><loc>https://docs.lifetimesoft.com/social-account-management/bind-social-and-identity</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://docs.lifetimesoft.com/identity-account-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://docs.lifetimesoft.com/identity-account-management/add-account</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/ai-agents-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/ai-agents-management/overview</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/ai-agents-management/cron-expression-format</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/ai-agents-management/troubleshooting</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/ai-agents-management/best-practices</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
 </urlset>`
     return c.body(xml, 200, {'Content-Type': 'application/xml'})
 })

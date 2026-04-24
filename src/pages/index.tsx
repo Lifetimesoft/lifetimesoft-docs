@@ -26,13 +26,13 @@ export const Index = ({lang}: { lang: Lang }) => {
                         {tr.heroBadge}
                     </div>
                     <h1 class="text-4xl sm:text-5xl font-bold text-gray-900 tracking-tight">{tr.heroTitle}</h1>
-                    <p class="mt-4 text-md text-gray-500 max-w-xl mx-auto">
+                    <p class="mt-4 text-base text-gray-500 max-w-xl mx-auto">
                         {tr.heroDesc}
                     </p>
                 </div>
             </section>
 
-            {/* Featured */}
+            {/* Featured Services */}
             <section class="max-w-7xl mx-auto px-4 py-12">
                 <h2 class="text-xl font-semibold text-gray-800 mb-1">{tr.featuredTitle}</h2>
                 <p class="text-sm text-gray-400 mb-6">{tr.featuredDesc}</p>
@@ -110,7 +110,7 @@ export const Index = ({lang}: { lang: Lang }) => {
                         </div>
 
                         {/* Cards */}
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
                             <template x-for="(app, index) in serviceApp.filter(a => !filter || a.name.toLowerCase().includes(filter.toLowerCase()) || a.desc.toLowerCase().includes(filter.toLowerCase()))">
                                 <a class="group block bg-white border border-gray-200 rounded-xl p-4 hover:border-green-400 hover:shadow-md transition-all"
                                    x-bind:href={`app.url + '?lang=${lang}'`}>

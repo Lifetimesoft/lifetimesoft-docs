@@ -30,5 +30,21 @@ export const services = [
                 }
             }
         ]
+    },
+    {
+        name: 'AI',
+        apps: [
+            {
+                name: {
+                    en: 'AI Agents Management',
+                    th: 'AI Agents Management'
+                },
+                url: '/ai-agents-management',
+                desc: {
+                    en: 'Create, configure, and manage AI agents',
+                    th: 'สร้าง ตั้งค่า และจัดการ AI agents'
+                }
+            }
+        ]
     }
 ];
