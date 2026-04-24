@@ -10,6 +10,8 @@ import AIAgentsManagementPage from "./pages/ai-agents-management";
 import CronExpressionFormatPage from "./pages/ai-agents-management/cron-expression-format";
 import TroubleshootingPage from "./pages/ai-agents-management/troubleshooting";
 import BestPracticesPage from "./pages/ai-agents-management/best-practices";
+import AIAccountManagementPage from "./pages/ai-account-management";
+import {AddAIAccount} from "./pages/ai-account-management/add-account";
 
 const app = new Hono()
 
@@ -41,6 +43,16 @@ app.get('/identity-account-management', (c) => {
 app.get('/identity-account-management/add-account', (c) => {
     const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
     return c.html(<AddIdentityAccount lang={lang}/>)
+})
+
+app.get('/ai-account-management', (c) => {
+    const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
+    return c.html(<AIAccountManagementPage lang={lang}/>)
+})
+
+app.get('/ai-account-management/add-account', (c) => {
+    const lang = getLang(c.req.query('lang'), c.req.header('Accept-Language'))
+    return c.html(<AddAIAccount lang={lang}/>)
 })
 
 app.get('/ai-agents-management', (c) => {
@@ -81,6 +93,8 @@ app.get('/sitemap.xml', (c) => {
   <url><loc>https://docs.lifetimesoft.com/social-account-management/bind-social-and-identity</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://docs.lifetimesoft.com/identity-account-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://docs.lifetimesoft.com/identity-account-management/add-account</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/ai-account-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://docs.lifetimesoft.com/ai-account-management/add-account</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://docs.lifetimesoft.com/ai-agents-management</loc><changefreq>monthly</changefreq><priority>0.8</priority></url>
   <url><loc>https://docs.lifetimesoft.com/ai-agents-management/overview</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>
   <url><loc>https://docs.lifetimesoft.com/ai-agents-management/cron-expression-format</loc><changefreq>monthly</changefreq><priority>0.6</priority></url>

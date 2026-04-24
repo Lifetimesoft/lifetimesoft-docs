@@ -1,6 +1,6 @@
 import {Lang, t} from "../model/i18n";
-import {Layout} from "../layout/layout";
-import {Header} from "../layout/header";
+import {LayoutDocs} from "../layout/layout-docs";
+import {HeaderDocs} from "../layout/header-docs";
 import {Footer} from "../layout/footer";
 import {services} from "../model/services";
 
@@ -13,8 +13,8 @@ export const Index = ({lang}: { lang: Lang }) => {
     })));
 
     return (
-        <Layout title="Lifetime Soft - Documentation" lang={lang}>
-            <Header lang={lang}/>
+        <LayoutDocs title="Lifetime Soft - Documentation" lang={lang}>
+            <HeaderDocs lang={lang}/>
             
             {/* Hero */}
             <section class="bg-gradient-to-br from-green-50 via-white to-emerald-50 border-b border-gray-100 py-16 px-4">
@@ -179,6 +179,6 @@ export const Index = ({lang}: { lang: Lang }) => {
             `}}/>
 
             <Footer lang={lang}/>
-        </Layout>
+        </LayoutDocs>
     )
 }

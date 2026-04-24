@@ -64,6 +64,14 @@ Track and analyze agent performance
 3. Click **"Stop"** to halt execution
 4. Status updates in real-time
 
+### Manual Trigger
+
+To run the agent immediately without waiting for the scheduled time:
+1. Go to the **Instance Detail** page
+2. Click the **"Trigger"** button (or ⚡ icon)
+3. The system will force the agent to run its task once immediately
+4. Useful for testing or out-of-schedule execution
+
 ### View Logs
 
 1. Go to **System Logs** (Admin Panel)
